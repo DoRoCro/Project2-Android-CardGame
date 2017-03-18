@@ -14,11 +14,13 @@ public class Hand {
 
     private ArrayList<Card> faceups;
     private ArrayList<Card> facedowns;
+    private Integer points;
 
 
     public Hand(){
         this.faceups = new ArrayList<Card>();
         this.facedowns = new ArrayList<Card>();
+        this.points = 0;
     }
 
     public void receiveCard( Card card ){
@@ -58,5 +60,20 @@ public class Hand {
     public Boolean equals(Hand handtocompare ){
         return this.faceups.equals(handtocompare.faceups) &&
                 this.facedowns.equals(handtocompare.faceups);
+    }
+
+    public Integer getPoints() {
+        return points;
+    }
+
+    public void setPoints(Integer points) {
+        this.points = points;
+    }
+
+    public ArrayList<Card> getAllCardsInHand(){
+        ArrayList<Card> list = new ArrayList<Card>();
+        list.addAll(faceups);
+        list.addAll(facedowns);
+        return list;
     }
 }

@@ -43,4 +43,19 @@ public class HandTest {
 
     }
 
+    @Test
+    public void canSetPointsForHand(){
+        hand1.setPoints(99);
+        assertEquals((Integer)99, hand1.getPoints());
+    }
+    @Test
+    public void canCountCardPointsinHand() {
+        hand1.receiveCard(card1);
+        Integer totalpoints = 0;
+        for ( Card card : hand1.getAllCardsInHand()){
+            totalpoints += card.getCardNumber().score();
+        }
+        assertEquals( (Integer) 12, totalpoints );
+    }
+
 }
