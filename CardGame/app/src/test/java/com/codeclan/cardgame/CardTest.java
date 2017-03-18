@@ -37,7 +37,6 @@ public class CardTest {
 
     @Test
     public void cardCanBeDuplicated() {
-        card = new Card( Card.CardNumber.ACE, Card.Suit.HEARTS );
         Card card2 = new Card( Card.CardNumber.ACE, Card.Suit.HEARTS );
         assertEquals(true, card2.equals(card));
     }
@@ -45,6 +44,11 @@ public class CardTest {
     @Test
     public void cardHasColour() {
         assertEquals(Card.SuitColour.RED, card.getSuitColour());
+    }
+
+    @Test
+    public void cardNumberHasScore(){
+        assertEquals(14, card.getCardNumber().score());
     }
 
     @Test
