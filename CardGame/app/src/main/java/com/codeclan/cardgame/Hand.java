@@ -3,7 +3,7 @@ package com.codeclan.cardgame;
 import java.util.ArrayList;
 
 /**
- * Created by user on 18/03/2017.
+ * Created by DRC on 18/03/2017.
  */
 
 public class Hand {
@@ -56,12 +56,7 @@ public class Hand {
     }
 
     public Boolean equals(Hand handtocompare ){
-        if (this.faceups.equals(handtocompare.faceups) &&
-                this.facedowns.equals( handtocompare.faceups) ){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return this.faceups.equals(handtocompare.faceups) &&
+                this.facedowns.equals(handtocompare.faceups);
     }
 }

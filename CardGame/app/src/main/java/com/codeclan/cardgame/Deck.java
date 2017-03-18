@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Created by user on 18/03/2017.
+ * Created by DRC on 18/03/2017.
  */
 
 public class Deck {
@@ -41,8 +41,7 @@ public class Deck {
 
     public Card dealCard(){
         // from top of deck
-        Card dealt = this.deck.remove(this.cardCount()-1);
-        return dealt;
+        return this.deck.remove(this.cardCount()-1);
     }
 
     public void returnCardToDeck(Card card){

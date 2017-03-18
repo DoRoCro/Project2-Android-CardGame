@@ -3,12 +3,13 @@ package com.codeclan.cardgame;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Objects;
 import java.util.concurrent.Callable;
 
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by user on 18/03/2017.
+ * Created by DRC on 18/03/2017.
  */
 
 public class DeckTest {
@@ -55,7 +56,7 @@ public class DeckTest {
         // (52 cards would be 1 in 52!  (approx 10^66)),
         // assuming Collections.shuffle() is genuinely random...
 
-        assertEquals(false, signature2 == signature1);
+        assertEquals(false, Objects.equals(signature2, signature1));
 
         // System.out.println(signature1);
         // System.out.println(signature2);

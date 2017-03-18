@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 /**
- * Created by user on 18/03/2017.
+ * Created by DRC on 18/03/2017.
  */
 
 public class HandTest {

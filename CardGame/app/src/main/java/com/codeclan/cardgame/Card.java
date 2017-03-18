@@ -38,7 +38,7 @@ public class Card {
 
     public enum SuitColour{
         BLACK,
-        RED;
+        RED
     }
 
     public enum Suit {
