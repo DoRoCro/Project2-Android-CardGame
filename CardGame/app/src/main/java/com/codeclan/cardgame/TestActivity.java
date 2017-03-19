@@ -12,6 +12,8 @@ public class TestActivity extends AppCompatActivity {
 
         Game2Player1CardHighestWinsN game = new Game2Player1CardHighestWinsN(2, new Viewer());
 
-        game.play();
+        game.setup();
+
+
     }
 }
