@@ -112,10 +112,18 @@ public class Game2Player1CardHighestWinsN implements GameMechanics {
         // tidy up if required
     }
 
+    public Player[] getPlayers() {   // added for testing
+        return players;
+    }
+
+    public TurnLog getTurnlog() {    // added for testing
+        return turnlog;
+    }
+
     @Override
     public void play(){
         setup();
-        for(roundsPlayed=0; roundsPlayed< rounds; roundsPlayed ++ ){
+        for(roundsPlayed=0; roundsPlayed < rounds; roundsPlayed ++ ){
             playARound();
         }
         endGame();

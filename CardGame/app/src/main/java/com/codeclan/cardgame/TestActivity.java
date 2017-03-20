@@ -23,8 +23,9 @@ public class TestActivity extends AppCompatActivity implements ViewerInterface {
 
     }
 
-    public void messageOut(String output){
-        System.out.println(output);
+    public String messageOut(String output){
+//        System.out.println(output);
+        return output;
     }
 
     public void listHand(Player player){

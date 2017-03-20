@@ -5,7 +5,7 @@ package com.codeclan.cardgame;
  */
 
 public interface ViewerInterface {
-    public void messageOut(String output);
+    public String messageOut(String output);
 
     public void listHand(Player player);
 

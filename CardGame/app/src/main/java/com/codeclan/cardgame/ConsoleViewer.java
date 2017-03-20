@@ -12,8 +12,9 @@ public class ConsoleViewer implements ViewerInterface {
     public ConsoleViewer() {
     }
 
-    public void messageOut(String output){
+    public String messageOut(String output){
         System.out.println(output);
+        return output;
     }
 
     public void listHand(Player player){
