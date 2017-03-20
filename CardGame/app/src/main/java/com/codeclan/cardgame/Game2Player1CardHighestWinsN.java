@@ -13,13 +13,13 @@ public class Game2Player1CardHighestWinsN implements GameMechanics {
     public TurnLog turnlog;
     Player player1 = new Player("You", new Hand());
     Player dealer = new Player("Computer", new Hand());   // is the computer
-    Viewer viewer;
+    ViewerInterface viewer;
     int rounds;
 
-//    public Viewer viewer;
+//    public ConsoleViewer viewer;
 
 
-    public Game2Player1CardHighestWinsN(Integer rounds, Viewer viewer) {
+    public Game2Player1CardHighestWinsN(Integer rounds, ViewerInterface viewer) {
 
         this.turnlog = new TurnLog();
         this.deck = new Deck(Card.CardNumber.values(), Card.Suit.values());
@@ -58,6 +58,7 @@ public class Game2Player1CardHighestWinsN implements GameMechanics {
     @Override
     public void playerTakesTurn(Player player) {
         player.getHand().receiveCard( deck.dealCard() );
+        viewer.waitForUserClick(player);
         player.getHand().showCardByIndex(0);
         updateLog(player);
         viewer.listHand(player);

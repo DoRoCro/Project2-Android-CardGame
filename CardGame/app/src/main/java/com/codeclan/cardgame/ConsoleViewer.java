@@ -2,12 +2,14 @@ package com.codeclan.cardgame;
 
 import javax.xml.transform.Source;
 
+import com.codeclan.cardgame.TestActivity.*;
+
 /**
  * Created by user on 18/03/2017.
  */
 
-public class Viewer {
-    public Viewer() {
+public class ConsoleViewer implements ViewerInterface {
+    public ConsoleViewer() {
     }
 
     public void messageOut(String output){
@@ -25,5 +27,10 @@ public class Viewer {
 
     public void winsGame(Player player) {
         messageOut("Congratulations " + player.getName() + ", you have won the game!");
+    }
+
+    public void waitForUserClick(Player player){
+        // hook for onclick in activity
+        // does nothing in console version
     }
 }

@@ -13,7 +13,7 @@ public class Game2Player1CardHighestWinsTest {
 
     @Before
     public void before(){
-        game = new Game2Player1CardHighestWinsN( 1,new Viewer());
+        game = new Game2Player1CardHighestWinsN( 1,new ConsoleViewer());
     }
 
     @Test
