@@ -8,13 +8,15 @@ import java.util.HashMap;
  */
 
 public class Game2Player1CardHighestWinsN implements GameMechanics {
-    public Player[] players;
-    Deck deck;
-    public TurnLog turnlog;
-    Player player1 = new Player("You", new Hand());
-    Player dealer = new Player("Computer", new Hand());   // is the computer
-    ViewerInterface viewer;
-    int rounds;
+    private static final int NUMPLAYERS = 2;
+    private Player[] players;
+    private Deck deck;
+    private TurnLog turnlog;
+    private Player player1 = new Player("You", new Hand());
+    private Player dealer = new Player("Computer", new Hand());   // is the computer
+    private ViewerInterface viewer;
+    private int rounds;
+    private int roundsPlayed;
 
 //    public ConsoleViewer viewer;
 
@@ -26,6 +28,7 @@ public class Game2Player1CardHighestWinsN implements GameMechanics {
         this.players = new Player[]{player1, dealer};
         this.viewer = viewer;
         this.rounds = rounds;
+        this.roundsPlayed =0;
     }
 
     @Override
@@ -43,14 +46,16 @@ public class Game2Player1CardHighestWinsN implements GameMechanics {
         if(roundScores.get(player1) > roundScores.get(dealer)){
 //            player 1 wins round
             viewer.winsRound(player1);
+            player1.setScore( player1.getScore() + 1);
         }
         else if( roundScores.get(dealer) == roundScores.get(player1)){
-//            draw
-            viewer.messageOut("Round is a draw");
+//            drawn round
+            viewer.messageOut("Round drawn");
         }
         else {
-//            dealer wins
+//            dealer wins round
             viewer.winsRound(dealer);
+            dealer.setScore( dealer.getScore() + 1);
         }
 
     }
@@ -71,27 +76,46 @@ public class Game2Player1CardHighestWinsN implements GameMechanics {
 
     @Override
     public boolean isWon() {
-        return false;
+//        game won condition.
+//        for this game, is only sensible to evaluate at end of N rounds by comparing player scores, but could abandon game midway and still declare a winner
+        return player1.getScore() != dealer.getScore();
     }
 
     @Override
     public boolean isOver() {
-        return false;
+//        game is over when have completed all rounds OR less cards in deck than players
+        return (deck.cardCount() < NUMPLAYERS) ||
+                (this.roundsPlayed >= rounds);
     }
 
     @Override
     public Player winner() {
-        return null;
+        if(player1.getScore() > dealer.getScore()){
+            // player 1 wins game
+            viewer.winsGame(player1);
+            return player1;
+        }
+        else if(player1.getScore() < dealer.getScore()){
+            // dealer wins game
+            viewer.winsRound(dealer);
+            return dealer;
+        }
+        else {
+            // drawn game
+            viewer.messageOut("Game drawn");
+            return null;
+        }
     }
 
     @Override
     public void endGame() {
+        // tidy up if required
     }
 
     @Override
     public void play(){
         setup();
-        for(int i=0; i< rounds; i++ ){
+        for(roundsPlayed=0; roundsPlayed< rounds; roundsPlayed ++ ){
             playARound();
         }
         endGame();
