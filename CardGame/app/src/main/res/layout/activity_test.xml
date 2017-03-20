@@ -44,6 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="194dp"
         android:contentDescription="@string/cardholder"
+        android:onClick="flipYouCardThenContinue"
         android:scaleType="centerInside"
         app:srcCompat="@drawable/card_back" />
 </LinearLayout>

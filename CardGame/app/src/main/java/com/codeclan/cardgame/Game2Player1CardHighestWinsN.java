@@ -126,6 +126,9 @@ public class Game2Player1CardHighestWinsN implements GameMechanics {
         for(roundsPlayed=0; roundsPlayed < rounds; roundsPlayed ++ ){
             playARound();
         }
+        if(isWon()){
+            viewer.winsGame(winner());
+        }
         endGame();
     }
 }

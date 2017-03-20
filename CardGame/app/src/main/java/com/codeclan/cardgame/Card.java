@@ -122,4 +122,9 @@ public class Card {
         return "" + this.cardnumber + " of " + this.suit;
     }
 
+    public String toDrawableName(){
+        return "card_" + this.cardnumber.toString().toLowerCase()
+                + "_of_" + this.suit.toString().toLowerCase();
+    }
+
 }
