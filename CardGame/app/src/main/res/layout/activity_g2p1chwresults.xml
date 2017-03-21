@@ -22,24 +22,34 @@
         android:text="@string/computer_label"
         android:textAlignment="center" />
 
+    <ImageButton
+        android:id="@+id/computerCard"
+        android:layout_width="match_parent"
+        android:layout_height="@android:dimen/thumbnail_height"
+        android:background="@android:color/holo_green_dark"
+        android:contentDescription="@string/cardholder"
+        android:scaleType="centerInside"
+        android:src="@drawable/card_black_joker" />
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/info_panel_results"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
-
-    <!--android:src="@drawable/card_back" -->
-
-    <TextView
-        android:id="@+id/info_panel"
-        android:layout_width="match_parent"
-        android:layout_height="@android:dimen/notification_large_icon_height"
         android:layout_gravity="center"
         android:background="?attr/colorControlHighlight"
         android:text="@string/info_panel_initial"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/youCard"
+        android:layout_width="match_parent"
+        android:layout_height="@android:dimen/thumbnail_height"
+        android:background="@android:color/holo_blue_dark"
+        android:contentDescription="@string/cardholder"
+        android:scaleType="centerInside"
+        android:src="@drawable/card_red_joker" />
 
     <TextView
         android:id="@+id/player_label"
@@ -50,4 +60,26 @@
         android:textAlignment="center" />
     <!--app:srcCompat="@drawable/card_back" -->
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/play_again_button"
+            android:onClick="playAgain"
+            android:text="Play Again"
+            android:layout_weight="1" />
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:id="@+id/return_to_gameselect_button"
+            android:onClick="returnToSelectGame"
+            android:text="Select game to play"
+            android:layout_weight="1" />
+
+
+    </LinearLayout>
 </LinearLayout>

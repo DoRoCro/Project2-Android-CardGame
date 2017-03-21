@@ -3,6 +3,7 @@ package com.codeclan.cardgame;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -129,6 +130,10 @@ public class G2P1CHWPlayActivity extends AppCompatActivity implements ViewerInte
 //         break out of onClick loop by going to new activity to display results
 //
             Intent resultsIntent = new Intent(this, G2P1CHWResultsActivity.class);
+            resultsIntent.putExtra("player1score", game.getPlayers()[0].getScore());
+            resultsIntent.putExtra("dealerscore", game.getPlayers()[1].getScore());
+            resultsIntent.putExtra("winner", game.winner().getName());
+
             startActivity(resultsIntent);
         }
 

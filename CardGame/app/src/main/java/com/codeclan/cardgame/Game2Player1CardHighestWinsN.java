@@ -104,7 +104,7 @@ public class Game2Player1CardHighestWinsN implements GameMechanics {
         else {
             // drawn game
             viewer.messageOut("Game drawn");
-            return null;
+            return new Player("Game drawn", new Hand());
         }
     }
 
