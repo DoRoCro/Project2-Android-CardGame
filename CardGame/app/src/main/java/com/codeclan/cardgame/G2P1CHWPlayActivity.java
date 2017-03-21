@@ -1,9 +1,13 @@
 package com.codeclan.cardgame;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class G2P1CHWPlayActivity extends AppCompatActivity implements ViewerInterface {
@@ -50,10 +54,81 @@ public class G2P1CHWPlayActivity extends AppCompatActivity implements ViewerInte
         messageOut("Congratulations " + player.getName() + ", you have won the game!");
     }
 
+    private enum PlayState{
+        NOCARDS,
+        DEALCARDS,
+        SHOWCARDS;
+
+        private PlayState getNext(){
+            // cycle through states (nicked from SO)
+            return values()[(this.ordinal() + 1) % PlayState.values().length];
+        }
+    }
+
+    private static PlayState playstate = PlayState.SHOWCARDS;  // initial value in class each time enter view?
+
+    public void nextStepInGame(View view){
+        // called by click on either card, so need to track state
+        Log.d(getClass().toString(),"playstate before = " + playstate.toString());
+
+        playstate = playstate.getNext();
+        Log.d(getClass().toString(),"playstate after update = " + playstate.toString());
+        ImageButton computerCard = (ImageButton) findViewById(R.id.computerCard);
+        ImageButton youCard = (ImageButton) findViewById(R.id.youCard);
+        TextView infoPanel = (TextView) findViewById(R.id.info_panel);
+        switch (playstate){
+            case NOCARDS: {
+                // show empty buttons as no cards on table
+                computerCard.setImageResource(R.color.holo_green_dark);
+                computerCard.setVisibility(View.VISIBLE);
+                youCard.setImageResource(R.color.holo_blue_dark);
+                youCard.setVisibility(View.VISIBLE);
+                infoPanel.setText("Click to deal cards to both players");
+
+                break;
+            }
+            case DEALCARDS: {
+                // show backs of cards ready to play them
+                computerCard.setImageResource(R.drawable.card_back);
+                computerCard.setVisibility(View.VISIBLE);
+                youCard.setImageResource(R.drawable.card_back);
+                youCard.setVisibility(View.VISIBLE);
+                infoPanel.setText("Click to reveal cards");
+                break;
+            }
+            case SHOWCARDS: {
+                // playARound, but only show card faces
+                game.playARound();
+                String cardToShow = this.game.getTurnlog().lastEntryFor(game.getPlayers()[1]).getHand().topShownCard().toDrawableName();
+                computerCard.setImageResource(getResources().getIdentifier(cardToShow, "drawable", "com.codeclan.cardgame"));
+                cardToShow = this.game.getTurnlog().lastEntryFor(game.getPlayers()[0]).getHand().topShownCard().toDrawableName();
+                youCard.setImageResource(getResources().getIdentifier(cardToShow, "drawable", "com.codeclan.cardgame"));
+
+                infoPanel.setText(getString(R.string.computer_label) + " has " +
+                        game.getPlayers()[1].getScore().toString() + " points, " +
+                        getString(R.string.player_label) + " has " +
+                        game.getPlayers()[0].getScore().toString() + " points.\n Click for clear table") ;
+
+                break;
+            }
+
+        }
+        if( game.isOver() ){
+//
+//         break out of loop by going to new activity to display results
+//
+            Intent resultsIntent = new Intent(this, G2P1CHWResultsActivity.class);
+            startActivity(resultsIntent);
+        }
+
+    }
+
     public void waitForUserClick(Player player){
         // hook for onclick in activity
-        System.out.println("wait for user click???");
+        Log.d(getClass().toString(),"wait for user click???");
         }
+
+
 
     public void flipComputerCardThenContinue(View view){
         this.game.playerTakesTurn(this.game.getPlayers()[1]);

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/CardGamePlay"
+    android:id="@+id/CardGameResults"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -22,15 +22,13 @@
         android:text="@string/computer_label"
         android:textAlignment="center" />
 
-    <ImageButton
-        android:id="@+id/computerCard"
+    <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:background="@android:color/holo_green_dark"
-        android:contentDescription="@string/cardholder"
-        android:onClick="nextStepInGame"
-        android:scaleType="centerInside" />
-        <!--android:src="@drawable/card_back" -->
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <!--android:src="@drawable/card_back" -->
 
     <TextView
         android:id="@+id/info_panel"
@@ -43,15 +41,6 @@
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <ImageButton
-        android:id="@+id/youCard"
-        android:layout_width="match_parent"
-        android:layout_height="194dp"
-        android:background="@android:color/holo_blue_dark"
-        android:contentDescription="@string/cardholder"
-        android:onClick="nextStepInGame"
-        android:scaleType="centerInside" />
-
     <TextView
         android:id="@+id/player_label"
         android:layout_width="match_parent"
@@ -62,4 +51,3 @@
     <!--app:srcCompat="@drawable/card_back" -->
 
 </LinearLayout>
-
