@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">CardGame</string>
     <string name="cardholder">CardHolder</string>
+    <string name="G2P1CHW">2 Player Highest Card Wins - 10 rounds</string>
+    <string name="select_game">Pick a game to play</string>
+    <string name="G2P2CHW">2 Card Highest Wins</string>
 </resources>
