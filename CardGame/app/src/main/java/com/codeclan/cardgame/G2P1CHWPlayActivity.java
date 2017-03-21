@@ -13,7 +13,8 @@ import android.widget.Toast;
 
 public class G2P1CHWPlayActivity extends AppCompatActivity implements ViewerInterface {
 
-    Game2Player1CardHighestWinsN game;
+    private Game2Player1CardHighestWinsN game;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +116,7 @@ public class G2P1CHWPlayActivity extends AppCompatActivity implements ViewerInte
                 youCard.setImageResource(getResources().getIdentifier(cardToShow, "drawable", "com.codeclan.cardgame"));
 
                 infoPanel.setText(getString(R.string.computer_label) + " has " +
-                        game.getPlayers()[1].getScore().toString() + " points, " +
+                        game.getPlayers()[1].getScore().toString() + " points,\n" +
                         getString(R.string.player_label) + " has " +
                         game.getPlayers()[0].getScore().toString() + " points.\n Click for clear table") ;
 
@@ -125,7 +126,7 @@ public class G2P1CHWPlayActivity extends AppCompatActivity implements ViewerInte
         }
         if( game.isOver() ){
 //
-//         break out of loop by going to new activity to display results
+//         break out of onClick loop by going to new activity to display results
 //
             Intent resultsIntent = new Intent(this, G2P1CHWResultsActivity.class);
             startActivity(resultsIntent);

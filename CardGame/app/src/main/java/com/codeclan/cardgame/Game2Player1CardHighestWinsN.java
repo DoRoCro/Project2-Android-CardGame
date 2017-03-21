@@ -4,7 +4,7 @@ package com.codeclan.cardgame;
 import java.util.HashMap;
 
 /**
- * Created by user on 18/03/2017.
+ * Created by DRC on 18/03/2017.
  */
 
 public class Game2Player1CardHighestWinsN implements GameMechanics {
@@ -43,6 +43,7 @@ public class Game2Player1CardHighestWinsN implements GameMechanics {
             playerTakesTurn(player);
             roundScores.put(player, player.getHand().topShownCard().getCardNumber().score());
         }
+        roundsPlayed ++;    // needs to incremented in playARound when called by AndroidActivity
         if(roundScores.get(player1) > roundScores.get(dealer)){
 //            player 1 wins round
             viewer.winsRound(player1);
@@ -123,7 +124,7 @@ public class Game2Player1CardHighestWinsN implements GameMechanics {
     @Override
     public void play(){
         setup();
-        for(roundsPlayed=0; roundsPlayed < rounds; roundsPlayed ++ ){
+        for(int roundsPlayedInPlay=0; roundsPlayedInPlay < rounds; roundsPlayedInPlay ++ ){
             playARound();
         }
         if(isWon()){
