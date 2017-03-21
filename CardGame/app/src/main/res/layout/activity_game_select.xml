@@ -21,6 +21,7 @@
         android:text="@string/select_game"
         android:textAlignment="center"
         android:textStyle="bold"
+        android:background="@color/colorAccent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/editText3"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.484" />
+        app:layout_constraintHorizontal_bias="0.5" />
 
     <Button
         android:id="@+id/playG2P2CHW"
@@ -51,21 +52,21 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playG2P1CHW"
-        app:layout_constraintHorizontal_bias="0.497" />
+        app:layout_constraintHorizontal_bias="0.5" />
 
     <Button
-        android:id="@+id/play3CBrag"
+        android:id="@+id/playG3CBrag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
         android:onClick="startG2P2CHW"
-        android:text="@string/G2P2CHW"
+        android:text="@string/G3CBrag"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/playG2P2CHW"
-        app:layout_constraintHorizontal_bias="0.497" />
+        app:layout_constraintHorizontal_bias="0.5" />
 
     <Button
         android:id="@+id/playBlackJack"
@@ -74,11 +75,11 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="16dp"
-        android:onClick="startG2P2CHW"
-        android:text="@string/G2P2CHW"
+        android:onClick="startBlackJack"
+        android:text="@string/blackjack"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/play3CBrag"
+        app:layout_constraintTop_toBottomOf="@+id/playG3CBrag"
         app:layout_constraintHorizontal_bias="0.5" />
 
 </android.support.constraint.ConstraintLayout>
