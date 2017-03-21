@@ -18,6 +18,8 @@
         android:ems="10"
         android:hint="test"
         android:inputType="none"
+        android:selectAllOnFocus="true"
+        android:singleLine="false"
         android:text="Computer"
         android:textAlignment="center" />
 

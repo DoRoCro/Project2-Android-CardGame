@@ -21,4 +21,7 @@ public class TurnLog {
         // get last entry in log for player.
         return this.log.get(this.log.lastIndexOf(player));
     }
+    public Player lastEntry(){
+        return this.log.get(this.log.size()-1);
+    }
 }

@@ -1,9 +1,5 @@
 package com.codeclan.cardgame;
 
-import javax.xml.transform.Source;
-
-import com.codeclan.cardgame.TestActivity.*;
-
 /**
  * Created by user on 18/03/2017.
  */

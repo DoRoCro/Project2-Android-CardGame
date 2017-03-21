@@ -63,10 +63,10 @@ public class Game2Player1CardHighestWinsN implements GameMechanics {
     @Override
     public void playerTakesTurn(Player player) {
         player.getHand().receiveCard( deck.dealCard() );
-        viewer.waitForUserClick(player);
+//        viewer.waitForUserClick(player);
         player.getHand().showCardByIndex(0);
         updateLog(player);
-        viewer.listHand(player);
+//        viewer.listHand(player);
     }
 
     @Override

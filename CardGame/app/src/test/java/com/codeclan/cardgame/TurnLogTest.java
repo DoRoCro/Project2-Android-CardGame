@@ -26,5 +26,17 @@ public class TurnLogTest {
         assertEquals("Slartibartfast", turnlog.lastEntryFor(player1).getName());
         assertEquals("Shown cards:\nHidden cards:", turnlog.lastEntryFor(player1).getHand().toString());
     }
+    @Test
+    public void canReturnLastEntry() {
+        turnlog = new TurnLog();
+        turnlog.addEntry(player1);
+        turnlog.addEntry(player1);
+        turnlog.addEntry(player1);
+        turnlog.addEntry(player1);
+        turnlog.addEntry(new Player("LastEntry", new Hand()));
+        assertEquals("Slartibartfast", turnlog.lastEntryFor(player1).getName());
+        assertEquals("Shown cards:\nHidden cards:", turnlog.lastEntryFor(player1).getHand().toString());
+        assertEquals("LastEntry", turnlog.lastEntry().getName());
+    }
 
 }
