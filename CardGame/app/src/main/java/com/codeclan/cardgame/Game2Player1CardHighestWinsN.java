@@ -85,7 +85,7 @@ public class Game2Player1CardHighestWinsN implements GameMechanics {
     public boolean isOver() {
 //        game is over when have completed all rounds OR less cards in deck than players
         return (deck.cardCount() < NUMPLAYERS) ||
-                (this.roundsPlayed >= rounds);
+                (this.roundsPlayed >= this.rounds);
     }
 
     @Override

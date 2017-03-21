@@ -10,4 +10,8 @@ public class G2P1CHWResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_g2p1chwresults);
     }
+
+//    TODO add button to return to launcher
+//    TODO add button to play again
+
 }

@@ -5,7 +5,7 @@
     <string name="select_game">Pick a game to play</string>
     <string name="G2P2CHW">2 Card Highest Wins</string>
     <string name="G3CBrag">3 Card Brag</string>
-    <string name="blackjack">Blackjack (simplified</string>
+    <string name="blackjack">Blackjack (simplified)</string>
     <string name="player_label">Puny Human</string>
     <string name="computer_label">Evil Computer Genius</string>
     <string name="info_panel_initial">This is the information/instruction bar\nClick above ot below this bar to advance the game</string>
