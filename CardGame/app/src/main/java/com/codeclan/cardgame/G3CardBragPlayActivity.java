@@ -67,7 +67,7 @@ public class G3CardBragPlayActivity extends AppCompatActivity {
 
     private static PlayState playstate = PlayState.SHOWCARDS;  // initial value in class each time enter view?
 
-    protected void nextStepInGame(View view) throws InterruptedException {
+    protected void nextStepInGame(View view){
 
         playstate = playstate.getNext();
 
@@ -98,7 +98,6 @@ public class G3CardBragPlayActivity extends AppCompatActivity {
             case SHOWCARDS: {
                 game.startPlay();
                 for (int i = 0; i <= 2; i++) {
-
                     computercards.get(i).setImageResource(
                             getResources().getIdentifier(
                                     cardToDrawableName(dealer.getCards()[i]), "drawable", "com.codeclan.cardgame"));
