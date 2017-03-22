@@ -16,9 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".G2P1CHWResultsActivity"></activity>
-        <activity android:name=".G2P2CHWPlayActivity"></activity>
-        <activity android:name=".G2P2CHWResultsActivity"></activity>
+        <activity android:name=".G2P1CHWResultsActivity" />
+        <activity android:name=".G2P2CHWPlayActivity" />
+        <activity android:name=".G2P2CHWResultsActivity" />
+        <activity android:name=".G3CardBragActivity"></activity>
     </application>
 
 </manifest>
