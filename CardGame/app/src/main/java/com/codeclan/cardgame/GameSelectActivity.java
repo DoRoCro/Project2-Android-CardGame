@@ -27,9 +27,8 @@ public class GameSelectActivity extends AppCompatActivity {
 
     public void startG3CBrag(View v) {
         // goto 3 card brag game
-//TODO
-//        Intent intent = new Intent(this, G3CBragPlayActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, G3CardBragPlayActivity.class);
+        startActivity(intent);
     }
     public void startBlackJack(View v) {
         // goto simplest game

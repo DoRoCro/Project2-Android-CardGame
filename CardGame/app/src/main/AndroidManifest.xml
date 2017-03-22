@@ -19,7 +19,7 @@
         <activity android:name=".G2P1CHWResultsActivity" />
         <activity android:name=".G2P2CHWPlayActivity" />
         <activity android:name=".G2P2CHWResultsActivity" />
-        <activity android:name=".G3CardBragActivity"></activity>
+        <activity android:name=".G3CardBragPlayActivity"></activity>
     </application>
 
 </manifest>
