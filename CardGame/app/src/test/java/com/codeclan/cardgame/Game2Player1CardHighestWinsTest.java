@@ -36,4 +36,12 @@ public class Game2Player1CardHighestWinsTest {
         game.play();
     }
 
+    @Test
+    public void playedGameHasWinner(){
+        // using unshuffled deck
+        game.playARound();
+        assertEquals(true, game.isOver());
+        assertEquals("You", game.winner().getName());
+    }
+
 }
