@@ -1,5 +1,6 @@
 package com.codeclan.cardgame;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -49,7 +50,8 @@ public class G3CardBragPlayActivity extends AppCompatActivity {
     private enum PlayState{
         NOCARDS,
         DEALCARDS,
-        SHOWCARDS;
+        SHOWCARDS,
+        NEWGAME;
 
         private PlayState getNext(){
             // cycle through states (nicked from SO)
@@ -65,12 +67,12 @@ public class G3CardBragPlayActivity extends AppCompatActivity {
 
     private static PlayState playstate = PlayState.SHOWCARDS;  // initial value in class each time enter view?
 
-    protected void nextStepInGame(View view){
+    protected void nextStepInGame(View view) throws InterruptedException {
 
         playstate = playstate.getNext();
 
         TextView infoPanel = (TextView) findViewById(R.id.info_panel);
-        switch (playstate){
+        switch (playstate) {
             case NOCARDS: {
                 // show empty buttons as no cards on table
                 for (ImageButton imgbtn : computercards) {
@@ -90,30 +92,32 @@ public class G3CardBragPlayActivity extends AppCompatActivity {
                     // TODO cosmetic delay here
                     computercards.get(i).setImageResource(R.drawable.card_back);
                 }
-                infoPanel.setText("Click to reveal cards");
+                infoPanel.setText("Click on a card to reveal cards");
                 break;
             }
             case SHOWCARDS: {
                 game.startPlay();
+                for (int i = 0; i <= 2; i++) {
 
+                    computercards.get(i).setImageResource(
+                            getResources().getIdentifier(
+                                    cardToDrawableName(dealer.getCards()[i]), "drawable", "com.codeclan.cardgame"));
+                    youcards.get(i).setImageResource(
+                            getResources().getIdentifier(
+                                    cardToDrawableName(player1.getCards()[i]), "drawable", "com.codeclan.cardgame"));
+                }
+                game.endPlay();
+                infoPanel.setText("And the winner is: \n" + game.getWinner().getName() + " with a " +
+                        game.getWinType().toString() + "\n Click to play again");
                 break;
             }
+            case NEWGAME: {
+                Intent newIntent = new Intent(this, GameSelectActivity.class);
+                infoPanel.setText("\n");
 
+                startActivity(newIntent);
+            }
         }
-      if( playstate == PlayState.SHOWCARDS ){
-          //single hand game is over
-//
-//          TODO uncomment and fix
-//         break out of onClick loop by going to new activity to display results
-//
-//            Intent resultsIntent = new Intent(this, G2P2CHWResultsActivity.class);
-//            resultsIntent.putExtra("player1score", game.getPlayers()[0].getScore());
-//            resultsIntent.putExtra("dealerscore", game.getPlayers()[1].getScore());
-//            resultsIntent.putExtra("winner", game.winner().getName());
-//
-//            startActivity(resultsIntent);
-        }
-
     }
 
 }
