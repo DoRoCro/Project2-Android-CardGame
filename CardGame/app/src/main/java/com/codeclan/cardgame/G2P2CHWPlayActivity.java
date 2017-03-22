@@ -22,7 +22,7 @@ public class G2P2CHWPlayActivity extends AppCompatActivity implements ViewerInte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_g2p2chwplay);
 
-        game = new Game2Player2CardHighestScoreWinsN(2, this);
+        game = new Game2Player2CardHighestScoreWinsN(10, this);
 
 //        Game2Player1CardHighestWinsN gameConsole = new Game2Player1CardHighestWinsN(10, new ConsoleViewer());
 //            gameConsole.play(); // runs game logic in console non-interactively using ConsoleViewer class
