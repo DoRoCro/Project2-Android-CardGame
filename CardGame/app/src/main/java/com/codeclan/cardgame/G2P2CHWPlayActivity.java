@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.SurfaceHolder;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class G2P2CHWPlayActivity extends AppCompatActivity implements ViewerInterface {
 
@@ -101,15 +104,20 @@ public class G2P2CHWPlayActivity extends AppCompatActivity implements ViewerInte
                 break;
             }
             case SHOWCARDS: {
-                // playARound, but only show card faces
+                // playARound, but only show last 2 card faces on the faceups pile
                 game.playARound();
                 // TODO update card 2 to show correct card not duplicate.  Needs method to access next card in hand
-                String cardToShow1 = this.game.getTurnlog().lastEntryFor(game.getPlayers()[1]).getHand().topShownCard().toDrawableName();
-                String cardToShow2 = this.game.getTurnlog().lastEntryFor(game.getPlayers()[1]).getHand().topShownCard().toDrawableName();
+                ArrayList<Card> shownCards = game.getPlayers()[1].getHand().getFaceups();
+                int lastcardindex = shownCards.size() - 1 ;
+                String cardToShow1 = shownCards.get(lastcardindex).toDrawableName();
+                String cardToShow2 = shownCards.get(lastcardindex - 1).toDrawableName();     // safe if two cards dealt
                 computerCard1.setImageResource(getResources().getIdentifier(cardToShow1, "drawable", "com.codeclan.cardgame"));
                 computerCard2.setImageResource(getResources().getIdentifier(cardToShow2, "drawable", "com.codeclan.cardgame"));
-                cardToShow1 = this.game.getTurnlog().lastEntryFor(game.getPlayers()[0]).getHand().topShownCard().toDrawableName();
-                cardToShow2 = this.game.getTurnlog().lastEntryFor(game.getPlayers()[0]).getHand().topShownCard().toDrawableName();
+
+                shownCards = game.getPlayers()[0].getHand().getFaceups();
+                lastcardindex = shownCards.size() - 1 ;    // redundant since should be same size for both players...
+                cardToShow1 = shownCards.get(lastcardindex).toDrawableName();
+                cardToShow2 = shownCards.get(lastcardindex - 1).toDrawableName();     // safe if two cards dealt
                 youCard1.setImageResource(getResources().getIdentifier(cardToShow1, "drawable", "com.codeclan.cardgame"));
                 youCard2.setImageResource(getResources().getIdentifier(cardToShow2, "drawable", "com.codeclan.cardgame"));
 

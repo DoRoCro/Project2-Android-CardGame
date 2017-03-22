@@ -76,4 +76,8 @@ public class Hand {
         list.addAll(facedowns);
         return list;
     }
+
+    public ArrayList<Card> getFaceups() {
+        return faceups;
+    }
 }

@@ -58,4 +58,11 @@ public class HandTest {
         assertEquals( (Integer) 12, totalpoints );
     }
 
+    @Test
+    public void canReturnShownCardsInHand(){
+        hand1.receiveCard(card1);
+        hand1.showCardByIndex(0);
+        assertEquals(new Card(Card.Suit.HEARTS, Card.CardNumber.QUEEN), hand1.getFaceups().get( hand1.getFaceups().size() - 1 ) );
+    }
+
 }
