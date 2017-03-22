@@ -21,6 +21,7 @@ public class G2P1CHWPlayActivity extends AppCompatActivity implements ViewerInte
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_g2p1chwplay);
+
         game = new Game2Player1CardHighestWinsN(2, this);
 
 //        Game2Player1CardHighestWinsN gameConsole = new Game2Player1CardHighestWinsN(10, new ConsoleViewer());

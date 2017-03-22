@@ -8,15 +8,16 @@ import java.util.HashMap;
  */
 
 public class Game2Player1CardHighestWinsN implements GameMechanics {
-    private static final int NUMPLAYERS = 2;
-    private Player[] players;
-    private Deck deck;
-    private TurnLog turnlog;
-    private Player player1 = new Player("You", new Hand());
-    private Player dealer = new Player("Computer", new Hand());   // is the computer
-    private ViewerInterface viewer;
-    private int rounds;
-    private int roundsPlayed;
+    protected static final int NUMPLAYERS = 2;
+    protected Player[] players;
+    protected Deck deck;
+    protected TurnLog turnlog;
+    protected Player player1 = new Player("You", new Hand());
+    protected Player dealer = new Player("Computer", new Hand());   // is the computer
+    protected ViewerInterface viewer;
+    protected int rounds;
+    protected int roundsPlayed;
+    protected int cardsInRound = 1;
 
 //    public ConsoleViewer viewer;
 
@@ -39,9 +40,11 @@ public class Game2Player1CardHighestWinsN implements GameMechanics {
     @Override
     public void playARound() {
         HashMap<Player, Integer> roundScores = new HashMap<Player, Integer>();
-        for (Player player : players){
-            playerTakesTurn(player);
-            roundScores.put(player, player.getHand().topShownCard().getCardNumber().score());
+        for (int i=0; i < cardsInRound; i++) {
+            for (Player player : players) {
+                playerTakesTurn(player);
+                roundScores.put(player, player.getHand().topShownCard().getCardNumber().score());
+            }
         }
         roundsPlayed ++;    // needs to incremented in playARound when called by AndroidActivity
         if(roundScores.get(player1) > roundScores.get(dealer)){
