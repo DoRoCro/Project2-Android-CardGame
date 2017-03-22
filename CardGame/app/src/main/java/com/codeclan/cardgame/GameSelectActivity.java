@@ -13,7 +13,6 @@ public class GameSelectActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_select);
     }
 
-
     public void startG2P1CHW(View v) {
         // goto simplest game
         Intent intent = new Intent(this, G2P1CHWPlayActivity.class);

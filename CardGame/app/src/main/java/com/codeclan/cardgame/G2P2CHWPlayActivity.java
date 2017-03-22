@@ -17,7 +17,7 @@ public class G2P2CHWPlayActivity extends AppCompatActivity implements ViewerInte
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_g2p1chwplay);
+        setContentView(R.layout.activity_g2p2chwplay);
 
         game = new Game2Player2CardHighestScoreWinsN(2, this);
 
@@ -75,36 +75,43 @@ public class G2P2CHWPlayActivity extends AppCompatActivity implements ViewerInte
 
         playstate = playstate.getNext();
         Log.d(getClass().toString(),"playstate after update = " + playstate.toString());
-        ImageButton computerCard = (ImageButton) findViewById(R.id.computerCard);
-        ImageButton youCard = (ImageButton) findViewById(R.id.youCard);
+        ImageButton computerCard1 = (ImageButton) findViewById(R.id.computerCard1);
+        ImageButton computerCard2 = (ImageButton) findViewById(R.id.computerCard2);
+        ImageButton youCard1 = (ImageButton) findViewById(R.id.youCard1);
+        ImageButton youCard2 = (ImageButton) findViewById(R.id.youCard2);
         TextView infoPanel = (TextView) findViewById(R.id.info_panel);
         switch (playstate){
             case NOCARDS: {
                 // show empty buttons as no cards on table
-                computerCard.setImageResource(R.color.holo_green_dark);
-                computerCard.setVisibility(View.VISIBLE);
-                youCard.setImageResource(R.color.holo_blue_dark);
-                youCard.setVisibility(View.VISIBLE);
+                computerCard1.setImageResource(R.color.holo_green_dark);
+                computerCard2.setImageResource(R.color.holo_green_dark);
+                youCard1.setImageResource(R.color.holo_blue_dark);
+                youCard2.setImageResource(R.color.holo_blue_dark);
                 infoPanel.setText("Click to deal cards to both players");
 
                 break;
             }
             case DEALCARDS: {
                 // show backs of cards ready to play them
-                computerCard.setImageResource(R.drawable.card_back);
-                computerCard.setVisibility(View.VISIBLE);
-                youCard.setImageResource(R.drawable.card_back);
-                youCard.setVisibility(View.VISIBLE);
+                computerCard1.setImageResource(R.drawable.card_back);
+                computerCard2.setImageResource(R.drawable.card_back);
+                youCard1.setImageResource(R.drawable.card_back);
+                youCard2.setImageResource(R.drawable.card_back);
                 infoPanel.setText("Click to reveal cards");
                 break;
             }
             case SHOWCARDS: {
                 // playARound, but only show card faces
                 game.playARound();
-                String cardToShow = this.game.getTurnlog().lastEntryFor(game.getPlayers()[1]).getHand().topShownCard().toDrawableName();
-                computerCard.setImageResource(getResources().getIdentifier(cardToShow, "drawable", "com.codeclan.cardgame"));
-                cardToShow = this.game.getTurnlog().lastEntryFor(game.getPlayers()[0]).getHand().topShownCard().toDrawableName();
-                youCard.setImageResource(getResources().getIdentifier(cardToShow, "drawable", "com.codeclan.cardgame"));
+                // TODO update card 2 to show correct card not duplicate.  Needs method to access next card in hand
+                String cardToShow1 = this.game.getTurnlog().lastEntryFor(game.getPlayers()[1]).getHand().topShownCard().toDrawableName();
+                String cardToShow2 = this.game.getTurnlog().lastEntryFor(game.getPlayers()[1]).getHand().topShownCard().toDrawableName();
+                computerCard1.setImageResource(getResources().getIdentifier(cardToShow1, "drawable", "com.codeclan.cardgame"));
+                computerCard2.setImageResource(getResources().getIdentifier(cardToShow2, "drawable", "com.codeclan.cardgame"));
+                cardToShow1 = this.game.getTurnlog().lastEntryFor(game.getPlayers()[0]).getHand().topShownCard().toDrawableName();
+                cardToShow2 = this.game.getTurnlog().lastEntryFor(game.getPlayers()[0]).getHand().topShownCard().toDrawableName();
+                youCard1.setImageResource(getResources().getIdentifier(cardToShow1, "drawable", "com.codeclan.cardgame"));
+                youCard2.setImageResource(getResources().getIdentifier(cardToShow2, "drawable", "com.codeclan.cardgame"));
 
                 infoPanel.setText(getString(R.string.computer_label) + " has " +
                         game.getPlayers()[1].getScore().toString() + " points,\n" +
@@ -119,7 +126,7 @@ public class G2P2CHWPlayActivity extends AppCompatActivity implements ViewerInte
 //
 //         break out of onClick loop by going to new activity to display results
 //
-            Intent resultsIntent = new Intent(this, G2P1CHWResultsActivity.class);
+            Intent resultsIntent = new Intent(this, G2P2CHWResultsActivity.class);
             resultsIntent.putExtra("player1score", game.getPlayers()[0].getScore());
             resultsIntent.putExtra("dealerscore", game.getPlayers()[1].getScore());
             resultsIntent.putExtra("winner", game.winner().getName());
@@ -128,6 +135,8 @@ public class G2P2CHWPlayActivity extends AppCompatActivity implements ViewerInte
         }
 
     }
+
+//    TODO may want to remove this from interface and game classes
 
     public void waitForUserClick(Player player){
         // hook for onclick in activity
