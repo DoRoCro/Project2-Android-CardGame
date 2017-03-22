@@ -22,10 +22,10 @@ public class GameSelectActivity extends AppCompatActivity {
 
     public void startG2P2CHW(View v) {
         // goto simple 2 card game
-//TODO
-//        Intent intent = new Intent(this, G2P2CHWPlayActivity.class);
-//        startActivity(intent);
+        Intent intent = new Intent(this, G2P2CHWPlayActivity.class);
+        startActivity(intent);
     }
+
     public void startG3CBrag(View v) {
         // goto 3 card brag game
 //TODO

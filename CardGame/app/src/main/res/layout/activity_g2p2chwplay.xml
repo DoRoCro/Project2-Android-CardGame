@@ -7,59 +7,93 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <!--<ImageButton-->
-    <!--android:id="@+id/imageButton"-->
-    <!--android:layout_width="251dp"-->
-    <!--android:layout_height="304dp"-->
-    <!--app:srcCompat="@drawable/card_4_of_diamonds" />-->
+
     <TextView
         android:id="@+id/computer_label"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="@android:color/holo_green_dark"
-        android:inputType="none"
-        android:selectAllOnFocus="true"
         android:text="@string/computer_label"
         android:textAlignment="center" />
 
-    <ImageButton
-        android:id="@+id/computerCard"
+    <LinearLayout
+        android:id="@+id/computer_cards"
         android:layout_width="match_parent"
-        android:layout_height="210dp"
-        android:background="@android:color/holo_green_dark"
-        android:contentDescription="@string/cardholder"
-        android:onClick="nextStepInGame"
-        android:scaleType="centerInside" />
-        <!--android:src="@drawable/card_back" -->
+        android:layout_weight="10"
+        android:layout_height="0dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/computerCard"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/holo_green_dark"
+            android:contentDescription="@string/cardholder"
+            android:onClick="nextStepInGame"
+            android:scaleType="centerInside" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_green_dark"
+            android:contentDescription="@string/cardholder"
+            android:onClick="nextStepInGame"
+            android:scaleType="centerInside" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/info_panel"
         android:layout_width="match_parent"
-        android:layout_height="@android:dimen/notification_large_icon_height"
+        android:layout_height="0dp"
         android:layout_gravity="center"
+        android:layout_weight="4"
         android:background="?attr/colorControlHighlight"
         android:text="@string/info_panel_initial"
         android:textAlignment="center"
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <ImageButton
-        android:id="@+id/youCard"
+    <LinearLayout
+        android:id="@+id/player_cards"
         android:layout_width="match_parent"
-        android:layout_height="194dp"
-        android:background="@android:color/holo_blue_dark"
-        android:contentDescription="@string/cardholder"
-        android:onClick="nextStepInGame"
-        android:scaleType="centerInside" />
+        android:layout_height="0dp"
+        android:layout_weight="10"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/youCard1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/holo_blue_dark"
+            android:contentDescription="@string/cardholder"
+            android:onClick="nextStepInGame"
+            android:scaleType="centerInside" />
+
+        <ImageButton
+            android:id="@+id/youCard2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/holo_blue_dark"
+            android:contentDescription="@string/cardholder"
+            android:onClick="nextStepInGame"
+            android:scaleType="centerInside" />
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/player_label"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:background="@android:color/holo_blue_dark"
         android:text="@string/player_label"
         android:textAlignment="center" />
-    <!--app:srcCompat="@drawable/card_back" -->
+
 
 </LinearLayout>
-

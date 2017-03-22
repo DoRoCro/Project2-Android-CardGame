@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 public class G2P2CHWPlayActivity extends AppCompatActivity implements ViewerInterface {
 
-    private Game2Player1CardHighestWinsN game;
+    private Game2Player2CardHighestScoreWinsN game;
 
 
     @Override
@@ -19,7 +19,7 @@ public class G2P2CHWPlayActivity extends AppCompatActivity implements ViewerInte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_g2p1chwplay);
 
-        game = new Game2Player1CardHighestWinsN(2, this);
+        game = new Game2Player2CardHighestScoreWinsN(2, this);
 
 //        Game2Player1CardHighestWinsN gameConsole = new Game2Player1CardHighestWinsN(10, new ConsoleViewer());
 //            gameConsole.play(); // runs game logic in console non-interactively using ConsoleViewer class
@@ -36,14 +36,6 @@ public class G2P2CHWPlayActivity extends AppCompatActivity implements ViewerInte
         Log.d(getClass().toString(), "setup, about to start game");
 
     }
-
-//    private Game2Player1CardHighestWinsN game;
-
-//    public G2P1CHWPlayActivity() {
-//        // seems to be called before onCreate
-//        this.game = new Game2Player1CardHighestWinsN(2, this);
-//        Log.d(getClass().toString(), getString(R.string.player_label));
-//    }
 
     public String messageOut(String output){
         System.out.println(output);
@@ -143,23 +135,4 @@ public class G2P2CHWPlayActivity extends AppCompatActivity implements ViewerInte
         }
 
 
-// Redundant development Code to delete
-//    public void flipComputerCardThenContinue(View view){
-//        this.game.playerTakesTurn(this.game.getPlayers()[1]);
-//
-//        String cardToShow = this.game.getTurnlog().lastEntryFor(game.getPlayers()[1]).getHand().topShownCard().toDrawableName();
-//        ImageButton computerCard = (ImageButton) findViewById(R.id.computerCard);// use turnlog to determine if still in same round and can turn card yet
-////        if(this.game.getTurnlog().lastEntry().getName() != this.game.getPlayers()[0].getName() ) {
-//            computerCard.setImageResource(getResources().getIdentifier(cardToShow, "drawable", "com.codeclan.cardgame"));
-////        }
-//
-//
-//    public void flipYouCardThenContinue(View view){
-//        this.game.playerTakesTurn(this.game.getPlayers()[0]);
-//        String cardToShow = this.game.getTurnlog().lastEntryFor(game.getPlayers()[0]).getHand().topShownCard().toDrawableName();
-//        ImageButton youCard = (ImageButton) findViewById(R.id.youCard);
-////        if(this.game.getTurnlog().lastEntry().getName() != this.game.getPlayers()[0].getName() ) {
-//            youCard.setImageResource(getResources().getIdentifier(cardToShow, "drawable", "com.codeclan.cardgame"));
-////        }
-//    }
 }
